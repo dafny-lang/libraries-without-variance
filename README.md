@@ -2,8 +2,8 @@
 
 Libraries useful for Dafny programs
 
-*This is a fork of `dafny-lang/libraries`* with variance declarations on type parameters removed,
-and hence supports compilation to Java despite https://github.com/dafny-lang/dafny/issues/2013.
+**This is a fork of [`dafny-lang/libraries`](https://github.com/dafny-lang/libraries)** with variance declarations on type parameters removed,
+and which therefore supports compilation to Java despite https://github.com/dafny-lang/dafny/issues/2013.
 
 ## Status
 

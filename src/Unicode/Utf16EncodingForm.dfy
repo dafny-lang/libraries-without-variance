@@ -58,8 +58,10 @@ module Utf16EncodingForm refines UnicodeEncodingForm {
       && prefix == s[..|prefix|]
       && IsMinimalWellFormedCodeUnitSubsequence(prefix)
   {
-    if |s| >= 1 && IsWellFormedSingleCodeUnitSequence(s[..1]) then Some(s[..1])
-    else if |s| >= 2 && IsWellFormedDoubleCodeUnitSequence(s[..2]) then Some(s[..2])
+    if |s| >= 1 && IsWellFormedSingleCodeUnitSequence(s[..1]) then
+      var r: MinimalWellFormedCodeUnitSeq := s[..1]; Some(r)
+    else if |s| >= 2 && IsWellFormedDoubleCodeUnitSequence(s[..2]) then
+      var r: MinimalWellFormedCodeUnitSeq := s[..2]; Some(r)
     else None
   }
 
