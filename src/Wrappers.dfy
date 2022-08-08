@@ -39,7 +39,7 @@ module Wrappers {
     function method Map<NewT>(reWrap: T -> NewT): Option<NewT>
     {
       match this
-      case Some(v) => Success(reWrap(v))
+      case Some(v) => Some(reWrap(v))
       case None => None
     }
   }
@@ -69,7 +69,7 @@ module Wrappers {
       Failure(this.error)
     }
 
-    function method MapSuccess<NewT>(reWrap: T -> NewT): Result<NewT, E>
+    function method MapSuccess<NewT>(reWrap: T -> NewT): Result<NewT, R>
     {
       match this
       case Success(s) => Success(reWrap(s))
