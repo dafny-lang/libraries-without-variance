@@ -106,6 +106,9 @@ module Utf8EncodingForm refines UnicodeEncodingForm {
   function method SplitPrefixMinimalWellFormedCodeUnitSubsequence(s: CodeUnitSeq):
     (maybePrefix: Option<MinimalWellFormedCodeUnitSeq>)
   {
+    // Attaching the subset types explicitly to work around
+    // type inference not picking it (unless Option<T> is declared as Option<+T>).
+    // BUG(https://github.com/dafny-lang/dafny/issues/2551)
     if |s| >= 1 && IsWellFormedSingleCodeUnitSequence(s[..1]) then 
       var r: MinimalWellFormedCodeUnitSeq := s[..1]; Some(r)
     else if |s| >= 2 && IsWellFormedDoubleCodeUnitSequence(s[..2]) then
